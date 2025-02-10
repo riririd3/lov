@@ -70,32 +70,26 @@
       // Handle different cases based on the number of clicks
       switch (button1ClickCount) {
         case 1:
-          // First click: Show new typing text
           const newText1 = "Kamu memilih untuk makan coklat! Apa yang akan kamu lakukan selanjutnya?";
-          typingIndex = 0; // Reset typing index for the new text
-          document.getElementById('typingText').innerHTML = ''; // Clear old text
+          typingIndex = 0;
+          document.getElementById('typingText').innerHTML = '';
           typeNewText(newText1);
           changeImage('img/img2.jpg');
           button1.textContent = "Lanjut makan";
           break;
         case 2:
-          // Second click: Change the image to img4
           changeImage('img/img4.jpg');
           break;
         case 3:
-          // Third click: Show another typing text
           const newText2 = "Kamu mulai merasa kenyang, tapi ada yang ingin kamu coba lagi.";
           typingIndex = 0;
           document.getElementById('typingText').innerHTML = '';
           typeNewText(newText2);
           break;
         case 4:
-          // Fourth click: Change the image to a new image
           changeImage('img/img5.jpg');
           break;
-        // Add more cases as needed for clicks 5, 6, 7, ...
         case 10:
-          // Tenth click: Perform some action
           changeImage('img/img10.jpg');
           break;
         default:
@@ -106,11 +100,15 @@
     function handleButton2Click() {
       const button1 = document.getElementById('button1');
       const button2 = document.getElementById('button2');
+
       if (typingInProgress) return; // Prevent button click if typing is in progress
       typingInProgress = true; // Mark typing as in progress
       button2.disabled = true; // Disable the button to prevent fast clicking
 
-     
+      // Change the button2 style to match button1's style
+      button2.style.backgroundColor = '#4CAF50';  // Same as button1 background color
+      button2.style.cursor = 'not-allowed';       // Same cursor as button1 when disabled
+
       button1.style.display = 'none';
       button2.style.display = 'none';
       changeImage('img/img0.jpg');
@@ -121,15 +119,19 @@
     }
 
     function typeNewText(newText) {
-      typingInProgress = true; // Mark typing as in progress
+      typingInProgress = true;
       if (typingIndex < newText.length) {
         document.getElementById('typingText').innerHTML += newText.charAt(typingIndex);
         typingIndex++;
         setTimeout(() => typeNewText(newText), 80);
       } else {
-        typingInProgress = false; // Mark typing as complete
-        document.getElementById('button1').disabled = false; // Re-enable the button
+        typingInProgress = false;
+        document.getElementById('button1').disabled = false;
         document.getElementById('button2').disabled = false;
+
+        // Restore button2's default appearance after typing is done
+        button2.style.backgroundColor = '';  // Reset background color
+        button2.style.cursor = '';           // Reset cursor
       }
     }
 
