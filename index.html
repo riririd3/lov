@@ -28,6 +28,10 @@
       cursor: pointer;
       margin: 0 10px;
     }
+    .disabled-button {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 <body>
@@ -66,6 +70,7 @@
 
       typingInProgress = true; // Mark typing as in progress
       button1.disabled = true; // Disable the button to prevent fast clicking
+      button1.classList.add('disabled-button');
 
       // Handle different cases based on the number of clicks
       switch (button1ClickCount) {
@@ -105,9 +110,8 @@
       typingInProgress = true; // Mark typing as in progress
       button2.disabled = true; // Disable the button to prevent fast clicking
 
-      // Change the button2 style to match button1's style
-      button2.style.backgroundColor = '#4CAF50';  // Same as button1 background color
-      button2.style.cursor = 'not-allowed';       // Same cursor as button1 when disabled
+      // Make button2 look like button1 during typing
+      button2.classList.add('disabled-button');
 
       button1.style.display = 'none';
       button2.style.display = 'none';
@@ -128,10 +132,8 @@
         typingInProgress = false;
         document.getElementById('button1').disabled = false;
         document.getElementById('button2').disabled = false;
-
-        // Restore button2's default appearance after typing is done
-        button2.style.backgroundColor = '';  // Reset background color
-        button2.style.cursor = '';           // Reset cursor
+        document.getElementById('button1').classList.remove('disabled-button');
+        document.getElementById('button2').classList.remove('disabled-button'); // Restore button2's normal look
       }
     }
 
