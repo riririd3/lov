@@ -43,12 +43,8 @@
   </div>
 
   <script>
-    const button2 = document.getElementById('button2');
-    button2.addEventListener('click', () => {
-       button1.style.display = 'none';
-       button2.style.display = 'none';
-    });
-    
+    let button1 = document.getElementById('button1');
+    let button2 = document.getElementById('button2');
     let typingIndex = 0;
     let button1ClickCount = 0; // Track the number of times button1 has been clicked
 
@@ -75,7 +71,7 @@
           typingIndex = 0; // Reset typing index for the new text
           document.getElementById('typingText').innerHTML = ''; // Clear old text
           typeNewText(newText1);
-          changeImage('img/img2.jpg);
+          changeImage('img/img2.jpg');
           button1.textContent = "Lanjut makan";
           break;
         case 2:
@@ -111,6 +107,12 @@
         setTimeout(() => typeNewText(newText), 100);
       }
     }
+
+    const button2 = document.getElementById('button2');
+    button2.addEventListener('click', () => {
+       button1.style.display = 'none';
+       button2.style.display = 'none';
+    });
 
     function changeImage(imageUrl) {
       document.getElementById('image').src = imageUrl;
