@@ -43,8 +43,13 @@
   </div>
 
   <script>
-    let button1 = document.getElementById('button1');
-    let button2 = document.getElementById('button2');
+    const button1 = document.getElementById('button1');
+    const button2 = document.getElementById('button2');
+    button2.addEventListener('click', () => {
+       button1.style.display = 'none';
+       button2.style.display = 'none';
+    });
+    
     let typingIndex = 0;
     let button1ClickCount = 0; // Track the number of times button1 has been clicked
 
@@ -107,12 +112,6 @@
         setTimeout(() => typeNewText(newText), 100);
       }
     }
-
-    const button2 = document.getElementById('button2');
-    button2.addEventListener('click', () => {
-       button1.style.display = 'none';
-       button2.style.display = 'none';
-    });
 
     function changeImage(imageUrl) {
       document.getElementById('image').src = imageUrl;
