@@ -45,6 +45,7 @@
   <script>
     let typingIndex = 0;
     let button1ClickCount = 0; // Track the number of times button1 has been clicked
+    let typingInProgress = false; // Track if typing is in progress
 
     const typingText = "Kamu mendapat coklat entah darimana. Apa yang akan kamu lakukan?";
 
@@ -60,6 +61,11 @@
       const button1 = document.getElementById('button1');
 
       button1ClickCount++; // Increment the click count
+
+      // Ensure typing is not in progress before proceeding
+      if (typingInProgress) return; // Prevent multiple clicks during typing
+
+      typingInProgress = true; // Mark typing as in progress
 
       // Handle different cases based on the number of clicks
       switch (button1ClickCount) {
@@ -97,18 +103,21 @@
           break;
       }
     }
-    
+
     function handleButton2Click() {
       document.getElementById('button1').style.display = 'none';
       document.getElementById('button2').style.display = 'none';
       changeImage('img/img0.jpg');
     }
-                  
+
     function typeNewText(newText) {
+      typingInProgress = true; // Mark typing as in progress
       if (typingIndex < newText.length) {
         document.getElementById('typingText').innerHTML += newText.charAt(typingIndex);
         typingIndex++;
         setTimeout(() => typeNewText(newText), 100);
+      } else {
+        typingInProgress = false; // Mark typing as complete
       }
     }
 
