@@ -34,7 +34,7 @@
 
   <img id="image" src="img/img1.jpg" alt="image1">
   <div class="text-container" id="typingText">
-    Klik tombol dibawah untuk memulai
+    Kamu mendapat coklat entah darimana. Apa yang akan kamu lakukan
   </div>
 
   <div class="buttons">
@@ -47,13 +47,13 @@
     let button1ClickCount = 0; // Track the number of times button1 has been clicked
     let typingInProgress = false; // Track if typing is in progress
 
-    const typingText = "Kamu mendapat coklat entah darimana. Apa yang akan kamu lakukan?";
+    const typingText = "?";
 
     function typeText() {
       if (typingIndex < typingText.length) {
         document.getElementById('typingText').innerHTML += typingText.charAt(typingIndex);
         typingIndex++;
-        setTimeout(typeText, 100);
+        setTimeout(typeText, 80);
       }
     }
 
@@ -106,6 +106,11 @@
     function handleButton2Click() {
       const button1 = document.getElementById('button1');
       const button2 = document.getElementById('button2');
+      if (typingInProgress) return; // Prevent button click if typing is in progress
+      typingInProgress = true; // Mark typing as in progress
+      button2.disabled = true; // Disable the button to prevent fast clicking
+
+     
       button1.style.display = 'none';
       button2.style.display = 'none';
       changeImage('img/img0.jpg');
@@ -120,10 +125,11 @@
       if (typingIndex < newText.length) {
         document.getElementById('typingText').innerHTML += newText.charAt(typingIndex);
         typingIndex++;
-        setTimeout(() => typeNewText(newText), 100);
+        setTimeout(() => typeNewText(newText), 80);
       } else {
         typingInProgress = false; // Mark typing as complete
         document.getElementById('button1').disabled = false; // Re-enable the button
+        document.getElementById('button2').disabled = false;
       }
     }
 
