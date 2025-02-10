@@ -28,6 +28,10 @@
       cursor: pointer;
       margin: 0 10px;
     }
+    button.clicked {
+      background-color: #555; /* Darker background */
+      color: white; /* White text */
+    }
   </style>
 </head>
 <body>
@@ -59,6 +63,7 @@
 
     function handleButton1Click() {
       const button1 = document.getElementById('button1');
+      const button2 = document.getElementById('button2');
 
       if (typingInProgress) return; // Prevent button click if typing is in progress
 
@@ -66,6 +71,10 @@
 
       typingInProgress = true; // Mark typing as in progress
       button1.disabled = true; // Disable the button to prevent fast clicking
+
+      // Apply the clicked class to button2 as well
+      button1.classList.add('clicked');
+      button2.classList.add('clicked');
 
       // Handle different cases based on the number of clicks
       switch (button1ClickCount) {
@@ -122,7 +131,7 @@
       } else {
         typingInProgress = false;
         document.getElementById('button1').disabled = false;
-        document.getElementById('button2').disabled = false;p
+        document.getElementById('button2').disabled = false;
       }
     }
 
