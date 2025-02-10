@@ -28,12 +28,17 @@
       cursor: pointer;
       margin: 0 10px;
     }
-    #noButton {
+    #button1 {
       padding: 10px 20px;
       font-size: 16px;
       cursor: pointer;
       margin: 0 10px;
     }
+    #button2 {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 0 10px;
   </style>
 </head>
 <body>
@@ -44,14 +49,15 @@
   </div>
 
   <div class="buttons">
-    <button onclick="changeImage('img/img2.jpg')">Makan</button>
-    <button id="noButton" onclick="changeImage('img/img3.jpg')">Biarkan</button>
+    <button id="button1" onclick="changeImage('img/img2.jpg')">Makan</button>
+    <button id="button2" onclick="changeImage('img/img3.jpg')">Biarkan</button>
   </div>
 
   <script>
-    const noButton = document.getElementById('noButton');
-    noButton.addEventListener('click', () => {
-      noButton.style.display = 'none';
+    const noButton = document.getElementById('button2');
+    button2.addEventListener('click', () => {
+      button2.style.display = 'none';
+      button1.style.display = 'none';
       });
    
     let typingIndex = 0;
