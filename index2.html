@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coklat dan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    img {
+      width: 50%;
+      max-width: 500px;
+      margin-bottom: 20px;
+    }
+    .text-container {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .buttons {
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 0 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <img id="image" src="img/img1.jpg" alt="image1">
+  <div class="text-container" id="typingText">
+    Klik tombol dibawah untuk memulai
+  </div>
+
+  <div class="buttons">
+    <button id="button1" onclick="handleButton1Click()">Makan</button>
+    <button id="button2" onclick="changeImage('img/img3.jpg')">Biarkan</button>
+  </div>
+
+  <script>
+    let typingIndex = 0;
+    let button1ClickCount = 0; // Track the number of times button1 has been clicked
+
+    const typingText = "Kamu mendapat coklat entah darimana. Apa yang akan kamu lakukan?";
+
+    function typeText() {
+      if (typingIndex < typingText.length) {
+        document.getElementById('typingText').innerHTML += typingText.charAt(typingIndex);
+        typingIndex++;
+        setTimeout(typeText, 100);
+      }
+    }
+
+    function handleButton1Click() {
+      const button1 = document.getElementById('button1');
+
+      button1ClickCount++; // Increment the click count
+
+      // Handle different cases based on the number of clicks
+      switch (button1ClickCount) {
+        case 1:
+          // First click: Show new typing text
+          const newText1 = "Kamu memilih untuk makan coklat! Apa yang akan kamu lakukan selanjutnya?";
+          typingIndex = 0; // Reset typing index for the new text
+          document.getElementById('typingText').innerHTML = ''; // Clear old text
+          typeNewText(newText1);
+          changeImage('img/img2.jpg);
+          break;
+        case 2:
+          // Second click: Change the image to img4
+          changeImage('img/img4.jpg');
+          break;
+        case 3:
+          // Third click: Show another typing text
+          const newText2 = "Kamu mulai merasa kenyang, tapi ada yang ingin kamu coba lagi.";
+          typingIndex = 0;
+          document.getElementById('typingText').innerHTML = '';
+          typeNewText(newText2);
+          break;
+        case 4:
+          // Fourth click: Change the image to a new image
+          changeImage('img/img5.jpg');
+          break;
+        // Add more cases as needed for clicks 5, 6, 7, ...
+        case 10:
+          // Tenth click: Perform some action
+          changeImage('img/img10.jpg');
+          break;
+        default:
+          // You can add default behavior if needed after 10 clicks
+          break;
+      }
+    }
+
+    function typeNewText(newText) {
+      if (typingIndex < newText.length) {
+        document.getElementById('typingText').innerHTML += newText.charAt(typingIndex);
+        typingIndex++;
+        setTimeout(() => typeNewText(newText), 100);
+      }
+    }
+
+    function changeImage(imageUrl) {
+      document.getElementById('image').src = imageUrl;
+    }
+
+    window.onload = typeText;
+  </script>
+
+</body>
+</html>
