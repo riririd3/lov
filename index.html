@@ -60,12 +60,12 @@
     function handleButton1Click() {
       const button1 = document.getElementById('button1');
 
+      if (typingInProgress) return; // Prevent button click if typing is in progress
+
       button1ClickCount++; // Increment the click count
 
-      // Ensure typing is not in progress before proceeding
-      if (typingInProgress) return; // Prevent multiple clicks during typing
-
       typingInProgress = true; // Mark typing as in progress
+      button1.disabled = true; // Disable the button to prevent fast clicking
 
       // Handle different cases based on the number of clicks
       switch (button1ClickCount) {
@@ -99,14 +99,15 @@
           changeImage('img/img10.jpg');
           break;
         default:
-          // You can add default behavior if needed after 10 clicks
           break;
       }
     }
 
     function handleButton2Click() {
-      document.getElementById('button1').style.display = 'none';
-      document.getElementById('button2').style.display = 'none';
+      const button1 = document.getElementById('button1');
+      const button2 = document.getElementById('button2');
+      button1.style.display = 'none';
+      button2.style.display = 'none';
       changeImage('img/img0.jpg');
       const newText0 = "Coklat diambil orang";
       typingIndex = 0;
@@ -122,6 +123,7 @@
         setTimeout(() => typeNewText(newText), 100);
       } else {
         typingInProgress = false; // Mark typing as complete
+        document.getElementById('button1').disabled = false; // Re-enable the button
       }
     }
 
