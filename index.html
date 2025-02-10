@@ -99,12 +99,11 @@
     }
     
     function handleButton2Click() {
-      const button2 = document.getElementById('button2');
-      button2.addEventListener('click', () => {
-      button1.style.display = 'none';
-      button2.style.display = 'none';
-    });
-      
+      document.getElementById('button1').style.display = 'none';
+      document.getElementById('button2').style.display = 'none';
+      changeImage('img/img0.jpg);
+    }
+                  
     function typeNewText(newText) {
       if (typingIndex < newText.length) {
         document.getElementById('typingText').innerHTML += newText.charAt(typingIndex);
