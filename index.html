@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coklat dan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    img {
+      width: 50%;
+      max-width: 500px;
+      margin-bottom: 20px;
+    }
+    .text-container {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .buttons {
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 0 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <img id="image" src="img/img1" alt="image1">
+  <div class="text-container" id="typingText">
+    Klik tombol dibawah untuk memulai
+  </div>
+
+  <div class="buttons">
+    <button onclick="changeImage('img/img2')">Makan</button>
+    <button onclick="changeImage('img/img3')">Biarkan</button>
+  </div>
+
+  <script>
+    let typingIndex = 0;
+    const typingText = "Kamu mendapat coklat entah darimana. Apa yang akan kamu lakukan?";
+
+    function typeText() {
+      if (typingIndex < typingText.length) {
+        document.getElementById('typingText').innerHTML += typingText.charAt(typingIndex);
+        typingIndex++;
+        setTimeout(typeText, 100);
+      }
+    }
+
+    function changeImage(imageUrl) {
+      document.getElementById('image').src = imageUrl;
+    }
+
+    window.onload = typeText;
+  </script>
+
+</body>
+</html>
