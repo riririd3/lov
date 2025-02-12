@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coklat dan</title>
+  <title>Kue Ulang Tahun</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -30,20 +30,21 @@
     }
     button.clicked {
       background-color: #555; /* Darker background */
-      color: white; /* White text */
+      color: grey; /* White text */
     }
   </style>
 </head>
 <body>
 
-  <img id="image" src="img/img1.jpg" alt="image1">
+  <img id="image" src="img/bday1.png" alt="bday">
   <div class="text-container" id="typingText">
-    Kamu mendapat coklat entah darimana. Apa yang akan kamu lakukan
+    Kamu mendapat kue entah darimana. Apa yang akan kamu lakukan
   </div>
 
   <div class="buttons">
     <button id="button1" onclick="handleButton1Click()">Makan</button>
     <button id="button2" onclick="handleButton2Click()">Biarkan</button>
+    <button id="button3" onclick="handleButton3Click()">Tiup lilin</button>
   </div>
 
   <script>
@@ -64,6 +65,7 @@
     function handleButton1Click() {
       const button1 = document.getElementById('button1');
       const button2 = document.getElementById('button2');
+      const button3 = document.getElementById('button3');
 
       if (typingInProgress) return; // Prevent button click if typing is in progress
 
@@ -71,35 +73,53 @@
 
       typingInProgress = true; // Mark typing as in progress
       button1.disabled = true; // Disable the button to prevent fast clicking
+      button2.disabled = true;
+      button3.disabled = true;
 
       // Apply the clicked class to button2 as well
       button1.classList.add('clicked');
       button2.classList.add('clicked');
+      button3.classList.add('clicked');
 
       // Handle different cases based on the number of clicks
       switch (button1ClickCount) {
         case 1:
-          const newText1 = "Kamu memilih untuk makan coklat! Apa yang akan kamu lakukan selanjutnya?";
+          const newText1 = "Kamu memilih untuk makan kue! Apa yang akan kamu lakukan selanjutnya?";
           typingIndex = 0;
           document.getElementById('typingText').innerHTML = '';
           typeNewText(newText1);
-          changeImage('img/img2.jpg');
+          changeImage('img/bday2.png');
           button1.textContent = "Lanjut makan";
           break;
         case 2:
-          changeImage('img/img4.jpg');
-          break;
-        case 3:
-          const newText2 = "Kamu mulai merasa kenyang, tapi ada yang ingin kamu coba lagi.";
+          const newText2 = "Kuenya manis dan enak. Apa yang akan kamu lakukan selanjutnya?";
           typingIndex = 0;
           document.getElementById('typingText').innerHTML = '';
           typeNewText(newText2);
+          changeImage('img/bday3.png');
+          button1.textContent = "Tetap lanjut makan";
+          break;
+        case 3:
+          const newText3 = "Kamu mulai merasa kenyang. Apa yang akan kamu lakukan selanjutnya?";
+          typingIndex = 0;
+          document.getElementById('typingText').innerHTML = '';
+          typeNewText(newText3);
+          changeImage('img/bday4.png');
           break;
         case 4:
-          changeImage('img/img5.jpg');
+          const newText4 = "Tinggal satu potong! Ada kucing yang perlahan mendekatimu. Apa yang akan kamu lakukan selanjutnya?";
+          typingIndex = 0;
+          document.getElementById('typingText').innerHTML = '';
+          typeNewText(newText4);
+          changeImage('img/bday5.png');
+          button1.textContent = "Makan sendiri";
           break;
-        case 10:
-          changeImage('img/img10.jpg');
+        case 5:
+          const newText5 = "Kamu menemukan surat dibawah kue! Apa yang akan kamu lakukan selanjutnya?";
+          typingIndex = 0;
+          document.getElementById('typingText').innerHTML = '';
+          typeNewText(newText5);
+          changeImage('img/bday6.jpg');
           break;
         default:
           break;
@@ -115,8 +135,8 @@
       button2.disabled = true; // Disable the button to prevent fast clicking
       button1.style.display = 'none';
       button2.style.display = 'none';
-      changeImage('img/img0.jpg');
-      const newText0 = "Coklat diambil orang";
+      changeImage('img/bday0.png');
+      const newText0 = "Kue dimakan orang";
       typingIndex = 0;
       document.getElementById('typingText').innerHTML = '';
       typeNewText(newText0);
