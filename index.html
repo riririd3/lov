@@ -127,6 +127,9 @@
         typingIndex = 0;
         document.getElementById('typingText').innerHTML = '';
         typeNewText(newText6);
+        setTimeout(function() {
+      document.getElementById('button1').textContent = "Makan";
+    }, newText6.length * 80);
 
         // Remove the new button after it's clicked
         setTimeout(() => {
