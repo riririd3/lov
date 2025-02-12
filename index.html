@@ -72,11 +72,11 @@
       typingInProgress = true;
       button1.disabled = true;
       button2.disabled = true;
-      button3.disabled = true;
+      newButton.disabled = true;
       
       button1.classList.add('clicked');
       button2.classList.add('clicked');
-      button3.classList.add('clicked');
+      newButton.classList.add('clicked');
 
       switch (button1ClickCount) {
         case 1:
@@ -109,7 +109,7 @@
           typeNewText(newText4);
           changeImage('img/bday5.png');
           button1.textContent = "Makan sendiri";
-          addButton3();
+          addnewButton();
           break;
         case 5:
           const newText5 = "Kamu menemukan surat dibawah kue! Apa yang akan kamu lakukan selanjutnya?";
@@ -125,7 +125,7 @@
       }
     }
     
-    function addButton3() {
+    function addnewButton() {
       newButton = document.createElement('button');
       newButton.textContent = "Beri makan kucing";
       newButton.onclick = function() {
