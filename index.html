@@ -72,11 +72,9 @@
       typingInProgress = true;
       button1.disabled = true;
       button2.disabled = true;
-      newButton.disabled = true;
       
       button1.classList.add('clicked');
       button2.classList.add('clicked');
-      newButton.classList.add('clicked');
 
       switch (button1ClickCount) {
         case 1:
@@ -125,23 +123,30 @@
       }
     }
     
-    function addnewButton() {
-      newButton = document.createElement('button');
-      newButton.textContent = "Beri makan kucing";
-      newButton.onclick = function() {
-      changeImage('img/bday5-2.png');
-      const newText6 = "Kamu memberikan strawberry. Kucing menyukainya. (+1)";
-          typingIndex = 0;
-          document.getElementById('typingText').innerHTML = '';
-          typeNewText(newText6);
-      setTimeout(function() {
-      // Change button1 text content here
+       function addnewButton() {
+  const newButton = document.createElement('button');
+  newButton.textContent = "Beri makan kucing";
+  newButton.id = "newButton"; // Add id
+  newButton.onclick = function() {
+    changeImage('img/bday5-2.png');
+    const newText6 = "Kamu memberikan strawberry. Kucing menyukainya. (+1)";
+    typingIndex = 0;
+    document.getElementById('typingText').innerHTML = '';
+    typeNewText(newText6);
+    setTimeout(function() {
       document.getElementById('button1').textContent = "Makan";
-      }, newText6.length * 80); // Delay to match typing duration
-      };
-      
-      const buttonContainer = document.querySelector('.buttons');
-      buttonContainer.appendChild(newButton);
+    }, newText6.length * 80); // Delay to match typing duration
+    if (typingInProgress) return; // Prevent button click if typing is in progress
+      typingInProgress = true; // Mark typing as in progress
+      newButton.disabled = true;
+      newButton.classList.add('clicked');
+  };
+  
+  const buttonContainer = document.querySelector('.buttons');
+  buttonContainer.appendChild(newButton);
+}
+
+
     }
 
     function handleButton2Click() {
