@@ -72,8 +72,8 @@
       typingInProgress = true;
       button1.disabled = true;
       button2.disabled = true;
-
-      button1.classList.add('clicked');
+      
+      button1.classList.add('clicked');aaaa
       button2.classList.add('clicked');
 
       switch (button1ClickCount) {
@@ -90,7 +90,7 @@
           typingIndex = 0;
           document.getElementById('typingText').innerHTML = '';
           typeNewText(newText2);
-          changeImage('img/bday3.png');
+          changeImage('img/bday3-2.png');
           button1.textContent = "Lanjut makan";
           break;
         case 3:
@@ -130,6 +130,10 @@
           typingIndex = 0;
           document.getElementById('typingText').innerHTML = '';
           typeNewText(newText6);
+      if (typingInProgress) return; // Prevent button click if typing is in progress
+      typingInProgress = true; // Mark typing as in progress
+      newButton.disabled = true;
+      newButton.classList.add('clicked');
       };
       
       const buttonContainer = document.querySelector('.buttons');
@@ -164,6 +168,7 @@
         document.getElementById('button2').disabled = false;
         button1.classList.remove('clicked');
         button2.classList.remove('clicked');
+        newButton.classList.remove('clicked');
       }
     }
 
