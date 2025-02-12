@@ -42,9 +42,8 @@
   </div>
 
   <div class="buttons">
-    <button id="button1" onclick="handleButton1Click()">Makan</button>
+    <button id="button1" onclick="handleButton1Click()">Tiup lilin</button>
     <button id="button2" onclick="handleButton2Click()">Biarkan</button>
-    <button id="button3" onclick="handleButton3Click()">Tiup lilin</button>
   </div>
 
   <script>
@@ -65,8 +64,7 @@
     function handleButton1Click() {
       const button1 = document.getElementById('button1');
       const button2 = document.getElementById('button2');
-      const button3 = document.getElementById('button3');
-
+      
       if (typingInProgress) return; // Prevent button click if typing is in progress
 
       button1ClickCount++; // Increment the click count
@@ -74,22 +72,20 @@
       typingInProgress = true; // Mark typing as in progress
       button1.disabled = true; // Disable the button to prevent fast clicking
       button2.disabled = true;
-      button3.disabled = true;
 
       // Apply the clicked class to button2 as well
       button1.classList.add('clicked');
       button2.classList.add('clicked');
-      button3.classList.add('clicked');
 
       // Handle different cases based on the number of clicks
       switch (button1ClickCount) {
         case 1:
-          const newText1 = "Kamu memilih untuk makan kue! Apa yang akan kamu lakukan selanjutnya?";
+          const newText1 = "Apa yang akan kamu lakukan selanjutnya?";
           typingIndex = 0;
           document.getElementById('typingText').innerHTML = '';
           typeNewText(newText1);
           changeImage('img/bday2.png');
-          button1.textContent = "Lanjut makan";
+          button1.textContent = "Makan";
           break;
         case 2:
           const newText2 = "Kuenya manis dan enak. Apa yang akan kamu lakukan selanjutnya?";
@@ -97,7 +93,7 @@
           document.getElementById('typingText').innerHTML = '';
           typeNewText(newText2);
           changeImage('img/bday3.png');
-          button1.textContent = "Tetap lanjut makan";
+          button1.textContent = "Lanjut makan";
           break;
         case 3:
           const newText3 = "Kamu mulai merasa kenyang. Apa yang akan kamu lakukan selanjutnya?";
