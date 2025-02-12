@@ -29,7 +29,7 @@
       margin: 0 10px;
     }
     #button3 {
-      display: none; /* Initially hide button3 */
+      display: none;
     }
   </style>
 </head>
@@ -43,7 +43,7 @@
   <div class="buttons">
     <button id="button1" onclick="handleButton1Click()">Tiup lilin</button>
     <button id="button2" onclick="handleButton2Click()">Biarkan</button>
-    <button id="button3" onclick="handleButton3Click()">Beri makan kucing</button> <!-- New Button3 -->
+    <button id="button3" onclick="handleButton3Click()">Beri makan kucing</button>
   </div>
 
   <script>
@@ -115,7 +115,7 @@
           changeImage('img/bday6.png');
           button1.textContent = 'Baca surat';
           button3.style.display = 'none';
-          button2.style.display = 'none'; // Hides the second button when the action happens
+          button2.style.display = 'none';
         case 6:
          const newText6 = "Kamu membaca surat dan...";
          typingIndex = 0;
@@ -123,13 +123,12 @@
          typeNewText(newText6);
          setTimeout(() => {
          window.location.href = 'https://youtube.com/watch?v=MHCsrKA9gh8&t=26';
-         }, 2000); 
+         }, 10000); 
         break;
         default:
         break;
       }
       
-      // Show button3 after the 4th click
       if (button1ClickCount === 4) {
         document.getElementById('button3').style.display = 'inline-block'; // Show button3 after the 4th click
       }
@@ -140,9 +139,9 @@
       const button2 = document.getElementById('button2');
       const button3 = document.getElementById('button3');
 
-      if (typingInProgress) return; // Prevent button click if typing is in progress
-      typingInProgress = true; // Mark typing as in progress
-      button2.disabled = true; // Disable the button to prevent fast clicking
+      if (typingInProgress) return;
+      typingInProgress = true; 
+      button2.disabled = true;
       button1.style.display = 'none';
       button2.style.display = 'none';
       button3.style.display = 'none';
@@ -157,12 +156,12 @@
       const button1 = document.getElementById('button1');
       const button2 = document.getElementById('button2');
       const button3 = document.getElementById('button3');
-      if (typingInProgress) return; // Prevent button click if typing is in progress
-      typingInProgress = true; // Mark typing as in progress
+      if (typingInProgress) return; 
+      typingInProgress = true; 
       button2.disabled = true;
       button1.disabled = true;
       button3.disabled = true;
-      // Add functionality for button3 when clicked (for example, feeding the cat)
+      
       const newText7 = "Kucing menyukai strawberry yang kamu berikan. Apa yang akan kamu lakukan selanjutnya? (+1 poin)";
       typingIndex = 0;
       document.getElementById('typingText').innerHTML = '';
