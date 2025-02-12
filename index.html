@@ -118,11 +118,13 @@
           button2.style.display = 'none';
           break;
         case 6:
-          const newText6 = "Kamu membaca surat dan...";
+          const newText6 = "...";
           typingIndex = 0;
           document.getElementById('typingText').innerHTML = '';
-          typeNewText(newText6, true);  
-        break;
+          typeNewText(newText6); 
+          setTimeout(() => {
+        window.location.href = 'https://youtube.com/watch?v=MHCsrKA9gh8&t=26';
+      }, 1000);
         break;
         default:
         break;
@@ -171,21 +173,17 @@
       button3.style.display = 'none';
     }
 
-    function typeNewText(newText, isCase6 = false) {
+    function typeNewText(newText) {
       typingInProgress = true;
       if (typingIndex < newText.length) {
         document.getElementById('typingText').innerHTML += newText.charAt(typingIndex);
         typingIndex++;
-        setTimeout(() => typeNewText(newText, isCase6), 80);
+        setTimeout(() => typeNewText(newText), 80);
       } else {
         typingInProgress = false;
         document.getElementById('button1').disabled = false;
         document.getElementById('button2').disabled = false;
         document.getElementById('button3').disabled = false;
-        if (isCase6) {
-      setTimeout(() => {
-        window.location.href = 'https://youtube.com/watch?v=MHCsrKA9gh8&t=26';
-      }, 1000);
       }
     }
 
