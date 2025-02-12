@@ -113,6 +113,8 @@
           document.getElementById('typingText').innerHTML = '';
           typeNewText(newText5);
           changeImage('img/bday6.png');
+          button1.textContent = 'Baca surat';
+          button3.style.display = 'none';
           button2.style.display = 'none'; // Hides the second button when the action happens
           break;
         default:
@@ -145,11 +147,20 @@
 
     function handleButton3Click() {
       // Add functionality for button3 when clicked (for example, feeding the cat)
-      const newText7 = "Kucing menyukai strawberry. Apa yang akan kamu lakukan selanjutnya? (+1)";
+      const newText7 = "Kucing menyukai strawberry yang kamu berikan. Apa yang akan kamu lakukan selanjutnya? (+1)";
       typingIndex = 0;
       document.getElementById('typingText').innerHTML = '';
       typeNewText(newText7);
       changeImage('img/bday5-2.png');
+      button1.textContent = "Makan";
+      button2.style.display = 'none';
+      button3.style.display = 'none';
+      
+      if (typingInProgress) return; // Prevent button click if typing is in progress
+      typingInProgress = true; // Mark typing as in progress
+      button2.disabled = true;
+      button1.disabled = true;
+      button3.disabled = true;
     }
 
     function typeNewText(newText) {
