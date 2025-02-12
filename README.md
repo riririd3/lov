@@ -1,1 +1,1 @@
-### riririd3.github.io/lov
+### https://riririd3.github.io/lov
