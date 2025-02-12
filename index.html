@@ -127,13 +127,11 @@
         document.getElementById('typingText').innerHTML = '';
         typeNewText(newText6);
 
-        // Remove the new button after it's clicked
+        // After typing is done, remove the new button and change button1 text
         setTimeout(() => {
           newButton.parentElement.removeChild(newButton); // Remove new button
+          document.getElementById('button1').textContent = "Makan"; // Change button1 text content
         }, newText6.length * 80); // Wait until typing ends before removing
-
-        // Disable the new button after it's clicked
-        newButton.disabled = true;
       };
       
       const buttonContainer = document.querySelector('.buttons');
