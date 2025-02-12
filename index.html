@@ -126,6 +126,9 @@
     typingIndex = 0;
     document.getElementById('typingText').innerHTML = '';
     typeNewText(newText6);
+    setTimeout(function() {
+      document.getElementById('button1').textContent = "Makan";
+    }, newText6.length * 80);
 
     // Wait until typing is done, then remove the button and update button1 text
     setTimeout(() => {
@@ -136,10 +139,7 @@
        
     }, newText6.length * 80); // Wait until typing ends before removing button
   };
-  setTimeout(function() {
-      document.getElementById('button1').textContent = "Makan";
-    }, newText6.length * 80);
-      
+  
   const buttonContainer = document.querySelector('.buttons');
   buttonContainer.appendChild(newButton);
 }
