@@ -115,6 +115,8 @@
           document.getElementById('typingText').innerHTML = '';
           typeNewText(newText5);
           changeImage('img/bday6.png');
+          button2.style.display = 'none';
+          newButton.style.display = 'none';
           break;
         default:
           break;
@@ -122,7 +124,7 @@
     }
     
     function addButton3() {
-      const newButton = document.createElement('button');
+      newButton = document.createElement('button');
       newButton.textContent = "Beri makan kucing";
       newButton.onclick = function() {
       changeImage('img/bday5-2.png');
@@ -134,6 +136,7 @@
       typingInProgress = true; // Mark typing as in progress
       newButton.disabled = true;
       newButton.classList.add('clicked');
+      button1.textContent = "Makan";
       };
       
       const buttonContainer = document.querySelector('.buttons');
