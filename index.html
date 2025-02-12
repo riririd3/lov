@@ -28,6 +28,9 @@
       cursor: pointer;
       margin: 0 10px;
     }
+    #button3 {
+      display: none; /* Initially hide button3 */
+    }
   </style>
 </head>
 <body>
@@ -40,6 +43,7 @@
   <div class="buttons">
     <button id="button1" onclick="handleButton1Click()">Tiup lilin</button>
     <button id="button2" onclick="handleButton2Click()">Biarkan</button>
+    <button id="button3" onclick="handleButton3Click()">Beri makan kucing</button> <!-- New Button3 -->
   </div>
 
   <script>
@@ -60,6 +64,7 @@
     function handleButton1Click() {
       const button1 = document.getElementById('button1');
       const button2 = document.getElementById('button2');
+      const button3 = document.getElementById('button3');
       
       if (typingInProgress) return;
 
@@ -68,6 +73,7 @@
       typingInProgress = true;
       button1.disabled = true;
       button2.disabled = true;
+      button3.disabled = true;
       
       switch (button1ClickCount) {
         case 1:
@@ -100,8 +106,6 @@
           typeNewText(newText4);
           changeImage('img/bday5.png');
           button1.textContent = "Makan sendiri";
-          button2.style.display = 'none'; // Hides the second button when the action happens
-          newButton.style.display = 'none';
           break;
         case 5:
           const newText5 = "Kamu menemukan surat dibawah kue! Apa yang akan kamu lakukan selanjutnya?";
@@ -110,57 +114,42 @@
           typeNewText(newText5);
           changeImage('img/bday6.png');
           button2.style.display = 'none'; // Hides the second button when the action happens
-          newButton.style.display = 'none';
           break;
         default:
           break;
       }
+      
+      // Show button3 after the 4th click
+      if (button1ClickCount === 4) {
+        document.getElementById('button3').style.display = 'inline-block'; // Show button3 after the 4th click
+      }
     }
-
-    function addnewButton() {
-  const newButton = document.createElement('button');
-  newButton.textContent = "Beri makan kucing";
-  newButton.id = "newButton"; // Add id
-  newButton.onclick = function() {
-    if (typingInProgress) return; // Prevent button click if typing is in progress
-    typingInProgress = true; // Mark typing as in progress
-    changeImage('img/bday5-2.png');
-    const newText6 = "Kamu memberikan strawberry. Kucing menyukainya. (+1)";
-    typingIndex = 0;
-    document.getElementById('typingText').innerHTML = '';
-    typeNewText(newText6);
-    setTimeout(function() {
-      document.getElementById('button1').textContent = "Makan";
-    }, newText6.length * 20);
-
-    // Wait until typing is done, then remove the button and update button1 text
-    setTimeout(() => {
-      // After typing ends, remove the new button
-      newButton.remove(); 
-
-      // Change button1 text content to "Makan"
-       
-    }, newText6.length * 5); // Wait until typing ends before removing button
-  };
-  
-  const buttonContainer = document.querySelector('.buttons');
-  buttonContainer.appendChild(newButton);
-}
-
+    
     function handleButton2Click() {
       const button1 = document.getElementById('button1');
       const button2 = document.getElementById('button2');
+      const button3 = document.getElementById('button3');
 
       if (typingInProgress) return; // Prevent button click if typing is in progress
       typingInProgress = true; // Mark typing as in progress
       button2.disabled = true; // Disable the button to prevent fast clicking
       button1.style.display = 'none';
       button2.style.display = 'none';
+      button3.style.display = 'none';
       changeImage('img/bday0.png');
       const newText0 = "Kue dimakan orang.";
       typingIndex = 0;
       document.getElementById('typingText').innerHTML = '';
       typeNewText(newText0);
+    }
+
+    function handleButton3Click() {
+      // Add functionality for button3 when clicked (for example, feeding the cat)
+      const newText7 = "Kucing menyukai strawberry. Apa yang akan kamu lakukan selanjutnya? (+1)";
+      typingIndex = 0;
+      document.getElementById('typingText').innerHTML = '';
+      typeNewText(newText7);
+      changeImage('img/bday5-2.png');
     }
 
     function typeNewText(newText) {
@@ -173,11 +162,7 @@
         typingInProgress = false;
         document.getElementById('button1').disabled = false;
         document.getElementById('button2').disabled = false;
-
-        // Only show the new button after typing is done
-        if (button1ClickCount === 4) {
-          addnewButton(); // Show the button after the typing is done
-        }
+        document.getElementById('button3').disabled = false;
       }
     }
 
