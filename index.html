@@ -62,108 +62,109 @@
     }
 
     function handleButton1Click() {
-      const button1 = document.getElementById('button1');
-      const button2 = document.getElementById('button2');
-      
-      if (typingInProgress) return;
+  const button1 = document.getElementById('button1');
+  const button2 = document.getElementById('button2');
+  
+  if (typingInProgress) return;
 
-      button1ClickCount++;
+  button1ClickCount++;
 
-      typingInProgress = true;
-      button1.disabled = true;
-      button2.disabled = true;
-      
-      button1.classList.add('clicked');
-      button2.classList.add('clicked');
+  typingInProgress = true;
+  button1.disabled = true;
+  button2.disabled = true;
+  
+  button1.classList.add('clicked');
+  button2.classList.add('clicked');
 
-      switch (button1ClickCount) {
-        case 1:
-          const newText1 = "Apa yang akan kamu lakukan selanjutnya?";
-          typingIndex = 0;
-          document.getElementById('typingText').innerHTML = '';
-          typeNewText(newText1);
-          changeImage('img/bday2.png');
-          button1.textContent = "Makan";
-          break;
-        case 2:
-          const newText2 = "Kuenya manis dan enak. Apa yang akan kamu lakukan selanjutnya?";
-          typingIndex = 0;
-          document.getElementById('typingText').innerHTML = '';
-          typeNewText(newText2);
-          changeImage('img/bday3-2.png');
-          button1.textContent = "Lanjut makan";
-          break;
-        case 3:
-          const newText3 = "Kamu mulai merasa kenyang. Apa yang akan kamu lakukan selanjutnya?";
-          typingIndex = 0;
-          document.getElementById('typingText').innerHTML = '';
-          typeNewText(newText3);
-          changeImage('img/bday4.png');
-          break;
-        case 4:
-          const newText4 = "Tinggal satu potong! Ada kucing yang perlahan mendekatimu. Apa yang akan kamu lakukan selanjutnya?";
-          typingIndex = 0;
-          document.getElementById('typingText').innerHTML = '';
-          typeNewText(newText4);
-          changeImage('img/bday5.png');
-          button1.textContent = "Makan sendiri";
-          addnewButton();
-          break;
-        case 5:
-          const newText5 = "Kamu menemukan surat dibawah kue! Apa yang akan kamu lakukan selanjutnya?";
-          typingIndex = 0;
-          document.getElementById('typingText').innerHTML = '';
-          typeNewText(newText5);
-          changeImage('img/bday6.png');
-          button2.style.display = 'none';
-          newButton.style.display = 'none';
-          break;
-        default:
-          break;
-      }
-    }
-    
-       function addnewButton() {
+  switch (button1ClickCount) {
+    case 1:
+      const newText1 = "Apa yang akan kamu lakukan selanjutnya?";
+      typingIndex = 0;
+      document.getElementById('typingText').innerHTML = '';
+      typeNewText(newText1);
+      changeImage('img/bday2.png');
+      button1.textContent = "Makan";
+      break;
+    case 2:
+      const newText2 = "Kuenya manis dan enak. Apa yang akan kamu lakukan selanjutnya?";
+      typingIndex = 0;
+      document.getElementById('typingText').innerHTML = '';
+      typeNewText(newText2);
+      changeImage('img/bday3-2.png');
+      button1.textContent = "Lanjut makan";
+      break;
+    case 3:
+      const newText3 = "Kamu mulai merasa kenyang. Apa yang akan kamu lakukan selanjutnya?";
+      typingIndex = 0;
+      document.getElementById('typingText').innerHTML = '';
+      typeNewText(newText3);
+      changeImage('img/bday4.png');
+      break;
+    case 4:
+      const newText4 = "Tinggal satu potong! Ada kucing yang perlahan mendekatimu. Apa yang akan kamu lakukan selanjutnya?";
+      typingIndex = 0;
+      document.getElementById('typingText').innerHTML = '';
+      typeNewText(newText4);
+      changeImage('img/bday5.png');
+      button1.textContent = "Makan sendiri";
+      addnewButton(); // This will create the new button dynamically
+      break;
+    case 5:
+      const newText5 = "Kamu menemukan surat dibawah kue! Apa yang akan kamu lakukan selanjutnya?";
+      typingIndex = 0;
+      document.getElementById('typingText').innerHTML = '';
+      typeNewText(newText5);
+      changeImage('img/bday6.png');
+      button2.style.display = 'none'; // Hides the second button when the action happens
+      break;
+    default:
+      break;
+  }
+}
+
+function addnewButton() {
   const newButton = document.createElement('button');
   newButton.textContent = "Beri makan kucing";
   newButton.id = "newButton"; // Add id
   newButton.onclick = function() {
+    if (typingInProgress) return; // Prevent button click if typing is in progress
+    typingInProgress = true; // Mark typing as in progress
     changeImage('img/bday5-2.png');
     const newText6 = "Kamu memberikan strawberry. Kucing menyukainya. (+1)";
     typingIndex = 0;
     document.getElementById('typingText').innerHTML = '';
     typeNewText(newText6);
+
+    // Re-enable the buttons after typing is finished
     setTimeout(function() {
       document.getElementById('button1').textContent = "Makan";
     }, newText6.length * 80); // Delay to match typing duration
-    if (typingInProgress) return; // Prevent button click if typing is in progress
-      typingInProgress = true; // Mark typing as in progress
-      newButton.disabled = true;
-      newButton.classList.add('clicked');
+
+    // Disable the new button after it's clicked
+    newButton.disabled = true;
+    newButton.classList.add('clicked');
   };
   
   const buttonContainer = document.querySelector('.buttons');
   buttonContainer.appendChild(newButton);
 }
 
+function handleButton2Click() {
+  const button1 = document.getElementById('button1');
+  const button2 = document.getElementById('button2');
 
-    }
+  if (typingInProgress) return; // Prevent button click if typing is in progress
+  typingInProgress = true; // Mark typing as in progress
+  button2.disabled = true; // Disable the button to prevent fast clicking
+  button1.style.display = 'none';
+  button2.style.display = 'none';
+  changeImage('img/bday0.png');
+  const newText0 = "Kue dimakan orang.";
+  typingIndex = 0;
+  document.getElementById('typingText').innerHTML = '';
+  typeNewText(newText0);
+}
 
-    function handleButton2Click() {
-      const button1 = document.getElementById('button1');
-      const button2 = document.getElementById('button2');
-
-      if (typingInProgress) return; // Prevent button click if typing is in progress
-      typingInProgress = true; // Mark typing as in progress
-      button2.disabled = true; // Disable the button to prevent fast clicking
-      button1.style.display = 'none';
-      button2.style.display = 'none';
-      changeImage('img/bday0.png');
-      const newText0 = "Kue dimakan orang.";
-      typingIndex = 0;
-      document.getElementById('typingText').innerHTML = '';
-      typeNewText(newText0);
-    }
 
     function typeNewText(newText) {
       typingInProgress = true;
