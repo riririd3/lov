@@ -100,7 +100,6 @@
           typeNewText(newText4);
           changeImage('img/bday5.png');
           button1.textContent = "Makan sendiri";
-          addnewButton(); // This will create the new button dynamically
           break;
         case 5:
           const newText5 = "Kamu menemukan surat dibawah kue! Apa yang akan kamu lakukan selanjutnya?";
@@ -127,9 +126,6 @@
         typingIndex = 0;
         document.getElementById('typingText').innerHTML = '';
         typeNewText(newText6);
-        setTimeout(function() {
-      document.getElementById('button1').textContent = "Makan";
-    }, newText6.length * 80);
 
         // Remove the new button after it's clicked
         setTimeout(() => {
@@ -170,6 +166,11 @@
         typingInProgress = false;
         document.getElementById('button1').disabled = false;
         document.getElementById('button2').disabled = false;
+
+        // Only show the new button after typing is done
+        if (button1ClickCount === 4) {
+          addnewButton(); // Show the button after the typing is done
+        }
       }
     }
 
