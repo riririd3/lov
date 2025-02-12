@@ -146,6 +146,14 @@
     }
 
     function handleButton3Click() {
+      const button1 = document.getElementById('button1');
+      const button2 = document.getElementById('button2');
+      const button3 = document.getElementById('button3');
+      if (typingInProgress) return; // Prevent button click if typing is in progress
+      typingInProgress = true; // Mark typing as in progress
+      button2.disabled = true;
+      button1.disabled = true;
+      button3.disabled = true;
       // Add functionality for button3 when clicked (for example, feeding the cat)
       const newText7 = "Kucing menyukai strawberry yang kamu berikan. Apa yang akan kamu lakukan selanjutnya? (+1)";
       typingIndex = 0;
@@ -155,12 +163,6 @@
       button1.textContent = "Makan";
       button2.style.display = 'none';
       button3.style.display = 'none';
-      
-      if (typingInProgress) return; // Prevent button click if typing is in progress
-      typingInProgress = true; // Mark typing as in progress
-      button2.disabled = true;
-      button1.disabled = true;
-      button3.disabled = true;
     }
 
     function typeNewText(newText) {
