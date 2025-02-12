@@ -115,28 +115,31 @@
     }
 
     function addnewButton() {
-      const newButton = document.createElement('button');
-      newButton.textContent = "Beri makan kucing";
-      newButton.id = "newButton"; // Add id
-      newButton.onclick = function() {
-        if (typingInProgress) return; // Prevent button click if typing is in progress
-        typingInProgress = true; // Mark typing as in progress
-        changeImage('img/bday5-2.png');
-        const newText6 = "Kamu memberikan strawberry. Kucing menyukainya. (+1)";
-        typingIndex = 0;
-        document.getElementById('typingText').innerHTML = '';
-        typeNewText(newText6);
+  const newButton = document.createElement('button');
+  newButton.textContent = "Beri makan kucing";
+  newButton.id = "newButton"; // Add id
+  newButton.onclick = function() {
+    if (typingInProgress) return; // Prevent button click if typing is in progress
+    typingInProgress = true; // Mark typing as in progress
+    changeImage('img/bday5-2.png');
+    const newText6 = "Kamu memberikan strawberry. Kucing menyukainya. (+1)";
+    typingIndex = 0;
+    document.getElementById('typingText').innerHTML = '';
+    typeNewText(newText6);
 
-        // After typing is done, remove the new button and change button1 text
-        setTimeout(() => {
-          newButton.parentElement.removeChild(newButton); // Remove new button
-          document.getElementById('button1').textContent = "Makan"; // Change button1 text content
-        }, newText6.length * 80); // Wait until typing ends before removing
-      };
-      
-      const buttonContainer = document.querySelector('.buttons');
-      buttonContainer.appendChild(newButton);
-    }
+    // Wait until typing is done, then remove the button and update button1 text
+    setTimeout(() => {
+      // After typing ends, remove the new button
+      newButton.parentElement.removeChild(newButton); 
+
+      // Change button1 text content to "Makan"
+      document.getElementById('button1').textContent = "Makan"; 
+    }, newText6.length * 80); // Wait until typing ends before removing button
+  };
+  
+  const buttonContainer = document.querySelector('.buttons');
+  buttonContainer.appendChild(newButton);
+}
 
     function handleButton2Click() {
       const button1 = document.getElementById('button1');
