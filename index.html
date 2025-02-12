@@ -28,10 +28,6 @@
       cursor: pointer;
       margin: 0 10px;
     }
-    button.clicked {
-      background-color: #555;
-      color: grey;
-    }
   </style>
 </head>
 <body>
@@ -73,9 +69,6 @@
   button1.disabled = true;
   button2.disabled = true;
   
-  button1.classList.add('clicked');
-  button2.classList.add('clicked');
-
   switch (button1ClickCount) {
     case 1:
       const newText1 = "Apa yang akan kamu lakukan selanjutnya?";
@@ -142,7 +135,7 @@ function addnewButton() {
 
     // Disable the new button after it's clicked
     newButton.disabled = true;
-    newButton.classList.add('clicked');
+    newButton.style.display  = 'none';
   };
   
   const buttonContainer = document.querySelector('.buttons');
@@ -176,8 +169,6 @@ function handleButton2Click() {
         typingInProgress = false;
         document.getElementById('button1').disabled = false;
         document.getElementById('button2').disabled = false;
-        button1.classList.remove('clicked');
-        button2.classList.remove('clicked');
       }
     }
 
