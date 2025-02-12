@@ -116,9 +116,17 @@
           button1.textContent = 'Baca surat';
           button3.style.display = 'none';
           button2.style.display = 'none'; // Hides the second button when the action happens
-          break;
+        case 6:
+         const newText6 = "Kamu membaca surat dan...";
+         typingIndex = 0;
+         document.getElementById('typingText').innerHTML = '';
+         typeNewText(newText6);
+         setTimeout(() => {
+         window.location.href = 'https://youtube.com/watch?v=MHCsrKA9gh8&t=26';
+         }, 2000); 
+        break;
         default:
-          break;
+        break;
       }
       
       // Show button3 after the 4th click
