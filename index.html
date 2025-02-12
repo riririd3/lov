@@ -136,7 +136,10 @@
        
     }, newText6.length * 80); // Wait until typing ends before removing button
   };
-  document.getElementById('button1').textContent = "Makan";
+  setTimeout(function() {
+      document.getElementById('button1').textContent = "Makan";
+    }, newText6.length * 80);
+      
   const buttonContainer = document.querySelector('.buttons');
   buttonContainer.appendChild(newButton);
 }
