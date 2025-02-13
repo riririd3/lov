@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Valentine Buat Kamu</title>
   <style>
+    @font-face {
+      font-family: 'MyCustomFont';
+      src: url('fonts/Friday Goodness.ttf') format('truetype');
+    }
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'MyChstomFont', sans-serif;
       text-align: center;
       padding: 20px;
     }
@@ -185,7 +189,7 @@
       if (typingIndex < newText.length) {
         document.getElementById('typingText').innerHTML += newText.charAt(typingIndex);
         typingIndex++;
-        setTimeout(() => typeNewText(newText), 80);
+        setTimeout(() => typeNewText(newText), 40);
       } else {
         typingInProgress = false;
         document.getElementById('button1').disabled = false;
