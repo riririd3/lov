@@ -43,13 +43,10 @@
       padding: 10px 20px;
       font-size: 16px;
       cursor: pointer;
-      background-color: #007bff;
+      background-color: #ffffff;
       color: white;
       border: none;
       border-radius: 5px;
-    }
-    .mute-btn:hover {
-      background-color: #0056b3;
     }
   </style>
 </head>
@@ -58,7 +55,7 @@
     <source src="fonts/Chibi.mp3" type="audio/mpeg">
      Your browser does not support the audio element.
   </audio>
-  <button class="mute-btn" onclick="toggleAudio()">Mute</button>
+  <button class="mute-btn" onclick="toggleAudio()">▶️</button>
 
 
   <img id="image" src="img/bday1.png" alt="bday">
@@ -229,10 +226,10 @@
     function toggleAudio() {
       if (audio.paused) {
          audio.play();
-         button.textContent = "Mute";
+         button.textContent = "⏸️";
       } else {
          audio.pause();
-         button.textContent = "Play";
+         button.textContent = "▶️";
        }
      }
 
